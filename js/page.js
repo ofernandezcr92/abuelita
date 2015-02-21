@@ -1,6 +1,7 @@
 var helpgrandma = helpgrandma || {},
     chrome = chrome || {},
-    mail = mail || {};
+    mail = mail || {},
+    search = search || {};
 
 function Page() {
     this.isInit = false;
@@ -32,6 +33,7 @@ function Page() {
         switch(type) {
             case 'search' :
                 mail.Composer.initComposer();
+                search.Bar.initBar();
         }
         // do something here to launch help
     };
