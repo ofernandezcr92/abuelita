@@ -10,21 +10,112 @@
           box-sizing: $boxmodel;
 }
 
-$frame-width : 30%;
+$header-color: #9b9da0;
+
+$h1-font-size-m: 30px;
+$h1-font-size-l: 42px;
+$h2-font-size-m: 14px;
+$h2-font-size-l: 19px;
+
+// buttons
+$btn-color-1: #5ac4be;
+$btn-color-2: #f16970;
+$btn-color-3: #7a58a5;
+// hover
+$btn-color-1-hover: #49a39e;
+$btn-color-2-hover: #c2535a;
+$btn-color-3-hover: #5d417f;
+
+@mixin calc($tag, $expr, $default: '') {
+    @if $default != '' { #{$tag}: $default !important; }
+    #{$tag}: -webkit-calc(#{$expr}) !important;
+    #{$tag}: -moz-calc(#{$expr}) !important;
+    #{$tag}: calc(#{$expr}) !important;
+}
+
+$frame-width : 400px;
 
 body {
     @include box-sizing(border-box);
-    padding-left: $frame-width;
+    padding-left: $frame-width !important;
+    position: relative;
     width: 100%;
 }
 
 #grandma-frame {
     background: #fff;
     border-right: 1px solid #eee;
-    @include box-shadow(4px 0 25px -12px rgba(0, 0, 0, 1));
-    height: 100%;
+    bottom: 0;
+    @include box-shadow(5px 0 5px -2px rgba(0, 0, 0, 0.2));
+    @include box-sizing(border-box);
     left: 0;
-    position: absolute;
+    padding: 15px 20px;
+    position: fixed;
     top: 0;
     width: $frame-width;
+    z-index: 9999;
+
+    h1 {
+        color: $header-color;
+        font-size: $h1-font-size-m;
+    }
+
+    h2 {
+        color: $header-color;
+        font-size: $h2-font-size-m;
+    }
+
+    .available-actions {
+        button {
+            background-color: $btn-color-1;
+            border: 0;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 32px;
+            height: 125px;
+            margin-bottom: 25px;
+            width: 100%;
+
+            &:hover,
+            &:active {
+                background-color: $btn-color-1-hover;
+                color: #fff;
+            }
+        }
+
+        .btn-search {
+            background-color: $btn-color-2;
+            &:hover,
+            &:active {
+                background-color: $btn-color-2-hover;
+            }
+        }
+
+        .btn-call {
+            background-color: $btn-color-3;
+            &:hover,
+            &:active {
+                background-color: $btn-color-3-hover;
+            }
+        }
+    }
+
+    @media (min-width: 968px) {
+        h1 {
+            font-size: $h1-font-size-l;
+        }
+
+        h2 {
+            font-size: $h2-font-size-l;
+        }
+    }
+}
+
+#grandma-site {
+    bottom: 0;
+    left: 400px;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
 }

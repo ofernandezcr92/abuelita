@@ -16,9 +16,13 @@ function Page() {
         }
 
         var frame = chrome.extension.getURL("frame.html");
-            $.get(frame, function(response) {
-                $("body").prepend(response);
-            });
+
+        $.get(frame, function(response) {
+            // wrap site content
+            $("body").wrapInner('<div id="grandma-site" class="grandma-frame-wrapper"></div>');
+            // add frame
+            $("body").prepend(response);
+        });
 
         this.isInit = true;
     };

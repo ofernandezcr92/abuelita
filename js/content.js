@@ -1,11 +1,9 @@
-var chrome = chrome || {};
-
 var chrome = chrome || {},
     helpgrandma = helpgrandma || {},
     console = console || {};
 
 chrome.runtime.onMessage.addListener(
-    function(request /*, sender, sendResponse*/) {
+    function(request) {
         switch(request.action) {
             case "init":
                 helpgrandma.Page.openSideBar();

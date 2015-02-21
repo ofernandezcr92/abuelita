@@ -5,11 +5,11 @@ function ActionsHandler() {
 
     var ACTIONS = [
         {
-            prefix: "mail.google.com",
+            prefix: "mail.google.com/*",
             action: "mail"
         },
         {
-            prefix: "www.google.com",
+            prefix: "www.google.com/*",
             action: "search"
         }
     ];
@@ -33,7 +33,7 @@ function ActionsHandler() {
             });
         }, {
             url: [{
-                hostEquals: action.prefix
+                urlMatches: action.prefix
             }]
         });
     };
