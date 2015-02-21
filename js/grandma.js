@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     $("body").append('Test');
-    chrome.tabs.update({
-        url: "http://www.gmail.com/"
-    });
+    alert(10);
+    // chrome.tabs.update({
+    //     url: "http://www.gmail.com/"
+    // });
 });
