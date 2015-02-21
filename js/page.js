@@ -31,7 +31,7 @@ function Page() {
     this.launch = function(type) {
         switch(type) {
             case 'search' :
-                mail.Composer.init();
+                mail.Composer.initComposer();
         }
         // do something here to launch help
     };
