@@ -36,6 +36,8 @@
 
   "web_accessible_resources" : [
     "vendor/*",
-    "frame.html"
+    "frame.html",
+    "img/*",
+    "fonts/*"
   ]
 }
