@@ -18,8 +18,8 @@
   // },
 
   "content_scripts": [ {
-    "css" : ["vendor/bootstrap/css/bootstrap-grandma.css", "css/grandma.css"],
-    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js"],
+    "css" : ["vendor/bootstrap/css/bootstrap-grandma.css", "css/grandma.css", "css/gmail.css"],
+    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js", "js/mail.js"],
     "matches": [ "http://*/*", "https://*/*"]
     // ,"run_at": "document_end"
   }],
