@@ -10,21 +10,47 @@
           box-sizing: $boxmodel;
 }
 
-$frame-width : 30%;
+@mixin calc($tag, $expr, $default: '') {
+    @if $default != '' { #{$tag}: $default !important; }
+    #{$tag}: -webkit-calc(#{$expr}) !important;
+    #{$tag}: -moz-calc(#{$expr}) !important;
+    #{$tag}: calc(#{$expr}) !important;
+}
+
+$frame-width : 400px;
 
 body {
     @include box-sizing(border-box);
-    padding-left: $frame-width;
+    padding-left: $frame-width !important;
+    position: relative;
     width: 100%;
+
+    > #grandma-frame:not(:first-child) {
+        display: none;
+    }
+
+    > .grandma-pos-abs-fix {
+        @include calc(width, '100% - ' + $frame-width, 100%);
+        left: $frame-width !important;
+    }
+
+    > .grandma-width100-fix {
+        @include calc(width, '100% - ' + $frame-width, 100%);
+        left: $frame-width !important;
+        position: absolute;
+    }
 }
 
 #grandma-frame {
     background: #fff;
     border-right: 1px solid #eee;
-    @include box-shadow(4px 0 25px -12px rgba(0, 0, 0, 1));
-    height: 100%;
+    bottom: 0;
+    @include box-shadow(5px 0 5px -2px rgba(0, 0, 0, 0.2));
+    @include box-sizing(border-box);
     left: 0;
-    position: absolute;
+    padding: 15px 20px;
+    position: fixed;
     top: 0;
     width: $frame-width;
+    z-index: 9999;
 }
