@@ -17,14 +17,8 @@ function Page() {
         var frame = chrome.extension.getURL("frame.html");
 
         $.get(frame, function(response) {
-            // position absolute fix
-            $("body > div:not(.grandma-frame-wrapper)").filter(function(){
-                return (['absolute', 'fixed'].indexOf($(this).css('position')) !== -1);
-            }).addClass('grandma-pos-abs-fix');
-            // width 100% fix
-            // $("body > div:not(.grandma-frame-wrapper):not(.grandma-pos-abs-fix)").filter(function(){
-            //     return ($(this)[0].style.width === '' && $(this).parent().width() === $(this).width());
-            // }).addClass('grandma-width100-fix');
+            // wrap site content
+            $("body").wrapInner('<div id="grandma-site" class="grandma-frame-wrapper"></div>');
             // add frame
             $("body").prepend(response);
         });
