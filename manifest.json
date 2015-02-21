@@ -19,7 +19,7 @@
 
   "content_scripts": [ {
     "css" : ["css/grandma.css"],
-    "js": [ "vendor/jquery/jquery.min.js", "js/content.js" ],
+    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js"],
     "matches": [ "http://*/*", "https://*/*"]
     // ,"run_at": "document_end"
   }],
