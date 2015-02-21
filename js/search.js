@@ -11,6 +11,6 @@ function Bar() {
     		}
     	}
 	};
-};
+}
 
 search.Bar  = new Bar();

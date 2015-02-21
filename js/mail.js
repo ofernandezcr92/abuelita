@@ -14,7 +14,7 @@ function Composer() {
     		}
     	}
 	};
-};
+}
 
 mail.Composer  = new Composer();
 
