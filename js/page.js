@@ -22,7 +22,9 @@ function Page() {
             // wrap site content
             $("body").wrapInner('<div id="grandma-site" class="grandma-frame-wrapper"></div>');
             // add frame
-            $("body").prepend(response);
+            var html = $(response);
+                html.find('.header img').attr('src', chrome.extension.getURL("img/abuela.png"));
+            $("body").prepend(html);
 
             self.initButtons();
         });
