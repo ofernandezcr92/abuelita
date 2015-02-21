@@ -29,6 +29,8 @@
   "web_accessible_resources" : [
     "fonts/*",
     "vendor/*",
-    "frame.html"
+    "frame.html",
+    "img/*",
+    "fonts/*"
   ]
 }
