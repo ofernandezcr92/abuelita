@@ -6,22 +6,14 @@
   "description": "Manipulate the DOM when the page is done loading",
 
   "background": {
-    // "page" : "grandma.html",
     "scripts": ["vendor/jquery/jquery.min.js", "js/grandma.js"],
     "persistent": false
   },
 
-  // "browser_action": {
-  //   "name": "Help granda!",
-  //   "default_icon": "icon.png",
-  //   "default_popup" : "grandma.html"
-  // },
-
   "content_scripts": [ {
-    "css" : ["vendor/bootstrap/css/bootstrap-grandma.css", "css/grandma.css", "css/gmail.css"],
-    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js", "js/mail.js"],
+    "css" : ["vendor/bootstrap/css/bootstrap-grandma.css", "css/grandma.css", "css/gmail.css", "css/search.css"],
+    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js", "js/mail.js", "js/search.js"],
     "matches": [ "http://*/*", "https://*/*"]
-    // ,"run_at": "document_end"
   }],
 
   "permissions": [

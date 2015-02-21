@@ -3,3 +3,13 @@
 	border-style : solid !important;
 	border-color : black !important;
 }
+
+.composer-announcement {
+	background-color: green;
+	height: 100px;
+	left: 180px;
+	position: absolute;
+	top: 0px;
+	width: 200px;
+	z-index: 1000;
+}
