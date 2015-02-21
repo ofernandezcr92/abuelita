@@ -1,4 +1,6 @@
 @import '_font';
+@import '_gmail';
+@import '_search';
 
 @mixin box-shadow($shadow...) {
   -webkit-box-shadow: $shadow;

@@ -8,7 +8,7 @@ function Composer() {
 			if($('.z0').length > 0) {
 				$('body').prepend('<div class="high-light"></div>');
 				$('.z0').parent().addClass("relevant-area");
-    			$('.z0').parent().append('<div class="composer-announcement"><span> Hola Kennt </span></div>')
+    			$('.z0').parent().append('<div class="composer-announcement"><div class="left-arrow"></div><div class="grandma-container"></div><span class="grandma-text"> Click this button </span></div>');
     			$('.z0').children().addClass("composer-button");
     			this.init = true;
     		}
@@ -17,3 +17,7 @@ function Composer() {
 };
 
 mail.Composer  = new Composer();
+
+
+
+
