@@ -7,6 +7,9 @@
 // });
 
 chrome.webNavigation.onCompleted.addListener(function() {
-    $("body").append("<div>Hello Oscar!</div>");
-    console.log(12312321414);
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
+        console.log(response.farewell);
+      });
+    });
 });
