@@ -1,0 +1,30 @@
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}
+
+$frame-width : 30%;
+
+body {
+    @include box-sizing(border-box);
+    padding-left: $frame-width;
+    width: 100%;
+}
+
+#grandma-frame {
+    background: #fff;
+    border-right: 1px solid #eee;
+    @include box-shadow(4px 0 25px -12px rgba(0, 0, 0, 1));
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: $frame-width;
+}
