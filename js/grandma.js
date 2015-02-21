@@ -47,6 +47,11 @@ function ActionsHandler() {
         }
     };
 
+    this.navigate = function(url) {
+        chrome.tabs.update({
+            url: url
+        });
+    };
     // init();
 }
 
@@ -67,5 +72,16 @@ function ActionsHandler() {
     // register specific handlers
     var actionsHandler = new ActionsHandler();
     actionsHandler.registerAllListeners();
+
+    // register listening actions
+    chrome.runtime.onMessage.addListener(function(request) {
+        switch(request.action) {
+            case 'navigate':
+                actionsHandler.navigate(request.url);
+                break;
+            default:
+                console.log('Invalid action');
+        }
+    });
 })();
 
