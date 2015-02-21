@@ -1,13 +1,14 @@
+var chrome = chrome || {};
 
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        console.log(sender.tab ?
-            "from a content script:" + sender.tab.url :
-            "from the extension");
-
-        if (request.greeting == "hello")
-            sendResponse({farewell: "goodbye"});
-
-        $("body").append("<div>Hello Oscar!</div>");
+    function(request /*, sender, sendResponse*/) {
+        switch(request.action) {
+            case "init":
+                var frame = chrome.extension.getURL("frame.html");
+                $.get(frame, function(response) {
+                    $("body").prepend(response);
+                });
+                break;
+        }
     }
 );

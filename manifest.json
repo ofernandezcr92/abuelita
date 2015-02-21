@@ -7,7 +7,7 @@
 
   "background": {
     // "page" : "grandma.html",
-    "scripts": ["js/jquery.min.js", "js/grandma.js"],
+    "scripts": ["vendor/jquery/jquery.min.js", "js/grandma.js"],
     "persistent": false
   },
 
@@ -18,12 +18,24 @@
   // },
 
   "content_scripts": [ {
-    "js": [ "js/jquery.min.js", "js/content.js" ],
+    "css" : ["css/grandma.css"],
+    "js": [ "vendor/jquery/jquery.min.js", "js/content.js" ],
     "matches": [ "http://*/*", "https://*/*"]
+    // ,"run_at": "document_end"
   }],
+
   "permissions": [
+    "tabs",
     "activeTab",
     "https://ajax.googleapis.com/",
-    "webNavigation"
+    "webNavigation",
+    "storage"
+  ],
+
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+
+  "web_accessible_resources" : [
+    "vendor/*",
+    "frame.html"
   ]
 }
