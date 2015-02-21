@@ -1,0 +1,68 @@
+.composer-button {
+	border-width : 10px !important;
+	border-style : solid !important;
+	border-color : white !important;
+}
+
+.composer-announcement {
+	background-color: white;
+	color: #5ac4be;
+	font-size: 32px;
+	height: 111px;
+	left: 160px;
+	position: absolute;
+	top: 0px;
+	width: 395px;
+	z-index: 1000;
+    font-family: "MuseoSans300", Arial, Helvetica !important;
+}
+
+.grandma-text {
+	display: inline-block;
+	margin-left: 15px;
+	margin-top: 40px;
+	vertical-align: top;
+}
+
+.grandma-container {
+	background-image: url('chrome-extension://__MSG_@@extension_id__/img/abuela.png');
+	height: 84px;
+	width: 84px;
+	display: inline-block;
+	background-size: 84px;
+	background-repeat: no-repeat;
+	margin-top: 12px;
+	margin-left: 30px;
+}
+
+.relevant-area {
+	position: relative;
+	z-index: 20;
+}
+
+
+.high-light {
+	background-color: rgb(242, 242, 242);
+	background: rgb(0, 0, 0);
+	height: 100%;
+	opacity: 0.8;
+	position: absolute;
+	width: 100%;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 6;
+}
+
+.left-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 10px;
+	left: -11px;
+	border-top: 11px solid transparent;
+	border-bottom: 11px solid transparent;
+	border-right: 11px solid white;
+}
+
