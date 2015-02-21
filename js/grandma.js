@@ -40,7 +40,7 @@ function ActionsHandler() {
 
     this.getActionType = function(url) {
         for (var i = ACTIONS.length - 1; i >= 0; i--) {
-            var re = new RegExp(ACTIONS[i]);
+            var re = new RegExp(ACTIONS[i].prefix);
             if (url.match(re)) {
                 return ACTIONS[i].action;
             }
