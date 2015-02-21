@@ -11,13 +11,10 @@ chrome.runtime.onMessage.addListener(
                 helpgrandma.Page.openSideBar();
                 break;
             case "launch":
-                helpgrandma.Page.launch();
+                helpgrandma.Page.launch(request.type);
                 break;
             default:
                 console.log("Invalid action");
         }
     }
 );
-
-
-

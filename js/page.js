@@ -1,5 +1,6 @@
 var helpgrandma = helpgrandma || {},
-    chrome = chrome || {};
+    chrome = chrome || {},
+    mail = mail || {};
 
 function Page() {
     this.isInit = false;
@@ -27,7 +28,11 @@ function Page() {
         });
     };
 
-    this.launch = function() {
+    this.launch = function(type) {
+        switch(type) {
+            case 'search' :
+                mail.Composer.init();
+        }
         // do something here to launch help
     };
 }
