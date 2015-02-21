@@ -27,7 +27,10 @@
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
   "web_accessible_resources" : [
+    "fonts/*",
     "vendor/*",
-    "frame.html"
+    "frame.html",
+    "img/*",
+    "fonts/*"
   ]
 }
