@@ -36,6 +36,24 @@ $btn-color-3-hover: #5d417f;
     #{$tag}: calc(#{$expr}) !important;
 }
 
+@mixin font-include($font-name, $font-url) {
+    @font-face {
+        font-family: $font-name;
+        src: url($font-url + '.eot');
+        src: url($font-url + '.eot?#iefix') format('embedded-opentype'),
+             url($font-url + '.otf') format('woff'),
+             url($font-url + '.woff') format('woff'),
+             url($font-url + '.ttf')  format('truetype'),
+             url($font-url + '.svg#svgFontName') format('svg');
+    }
+}
+
+@include font-include('Museo300', 'chrome-extension://__MSG_@@extension_id__/fonts/Museo/museo-300-regular');
+@include font-include('MuseoSans300', 'chrome-extension://__MSG_@@extension_id__/fonts/MuseoSans/museo-sans-300');
+@include font-include('MuseoSans500', 'chrome-extension://__MSG_@@extension_id__/fonts/MuseoSans/museo-sans-500');
+@include font-include('MuseoSlab500', 'chrome-extension://__MSG_@@extension_id__/fonts/MuseoSlab/museo-slab-500');
+@include font-include('MuseoSlab700', 'chrome-extension://__MSG_@@extension_id__/fonts/MuseoSlab/museo-slab-700');
+
 $frame-width : 350px;
 
 body {
@@ -47,8 +65,7 @@ body {
 
 #grandma-frame {
     background: #fff;
-    // background-image: url('img/bg.png');
-    background-image:url('chrome-extension://__MSG_@@extension_id__/img/bg.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/img/bg.png');
     border-right: 1px solid #eee;
     bottom: 0;
     @include box-shadow(5px 0 5px -2px rgba(0, 0, 0, 0.2));
@@ -132,4 +149,8 @@ body {
     position: fixed;
     right: 0;
     top: 0;
+}
+
+.grandma-frame-wrapper {
+    font-family: "MuseoSans300", Arial, Helvetica !important;
 }
