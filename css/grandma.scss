@@ -11,6 +11,22 @@
 }
 
 $frame-width : 30%;
+$header-color: #9b9da0;
+
+$h1-font-size-m: 30px;
+$h1-font-size-l: 42px;
+$h2-font-size-m: 14px;
+$h2-font-size-l: 19px;
+
+// buttons
+$btn-color-1: #5ac4be;
+$btn-color-2: #f16970;
+$btn-color-3: #7a58a5;
+// hover
+$btn-color-1-hover: #49a39e;
+$btn-color-2-hover: #c2535a;
+$btn-color-3-hover: #5d417f;
+
 
 body {
     @include box-sizing(border-box);
@@ -27,4 +43,60 @@ body {
     position: absolute;
     top: 0;
     width: $frame-width;
+    z-index: 1000;
+
+    h1 {
+        color: $header-color;
+        font-size: $h1-font-size-m;
+    }
+
+    h2 {
+        color: $header-color;
+        font-size: $h2-font-size-m;
+    }
+
+    .available-actions {
+        button {
+            background-color: $btn-color-1;
+            border: 0;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 32px;
+            height: 125px;
+            margin-bottom: 25px;
+            width: 100%;
+
+            &:hover,
+            &:active {
+                background-color: $btn-color-1-hover;
+                color: #fff;
+            }
+        }
+
+        .btn-search {
+            background-color: $btn-color-2;
+            &:hover,
+            &:active {
+                background-color: $btn-color-2-hover;
+            }
+        }
+
+        .btn-call {
+            background-color: $btn-color-3;
+            &:hover,
+            &:active {
+                background-color: $btn-color-3-hover;
+            }
+        }
+    }
+
+    @media (min-width: 968px) {
+        h1 {
+            font-size: $h1-font-size-l;
+        }
+
+        h2 {
+            font-size: $h2-font-size-l;
+        }
+    }
 }
