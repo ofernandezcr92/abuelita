@@ -5,9 +5,11 @@ function Composer() {
 
 	this.initComposer = function () {
 		if(!this.init) {
-    		$('.z0').append('<div class=""></div>')
-    		$('.z0').children().addClass("composer-button");
-    		this.init = true;
+			if($('.z0').length > 0) {
+    			$('.z0').append('<div class=""></div>')
+    			$('.z0').children().addClass("composer-button");
+    			this.init = true;
+    		}
     	}
 	};
 };
