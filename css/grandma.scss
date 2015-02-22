@@ -26,10 +26,12 @@ $h2-font-size-l: 19px;
 $btn-color-1: #5ac4be;
 $btn-color-2: #f16970;
 $btn-color-3: #7a58a5;
+$btn-color-4: #fcb614;
 // hover
 $btn-color-1-hover: #49a39e;
 $btn-color-2-hover: #c2535a;
 $btn-color-3-hover: #5d417f;
+$btn-color-4-hover: #dba012;
 
 @mixin calc($tag, $expr, $default: '') {
     @if $default != '' { #{$tag}: $default !important; }
@@ -143,6 +145,14 @@ body {
                 background-color: $btn-color-3-hover;
             }
         }
+
+        .btn-play {
+            background-color: $btn-color-4;
+            &:hover,
+            &:active {
+                background-color: $btn-color-4-hover;
+            }
+        }
     }
 
     @media (min-width: 968px) {
@@ -157,7 +167,6 @@ body {
 }
 
 #grandma-site {
-    overflow: visible;
     bottom: 0;
     left: $frame-width;
     overflow: auto;

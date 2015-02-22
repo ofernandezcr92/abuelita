@@ -1,9 +1,12 @@
 var helpgrandma = helpgrandma || {},
     chrome = chrome || {},
-    // mail = mail || {},
+    console = console || {},
     search = search || {};
 
+var TEMPLATES = {};
+
 function Page() {
+
     this.isInit = false;
 
     /**
@@ -16,18 +19,26 @@ function Page() {
         }
 
         var self = this,
-            frame = chrome.extension.getURL("frame.html");
+            frameURL = chrome.extension.getURL("templates/frame.html"),
+            buttonURL = chrome.extension.getURL("templates/button.html");
 
-        $.get(frame, function(response) {
+        $.get(frameURL, function(response) {
+            TEMPLATES['frame'] = response;
+
             // wrap site content
             // TODO: this doesn't work in gmail/google
             // $("body").wrapInner('<div id="grandma-site" class="grandma-frame-wrapper"></div>');
+
             // add frame
             var html = $(response);
                 html.find('.header img').attr('src', chrome.extension.getURL("img/abuela.png"));
+
             $("body").prepend(html);
 
-            self.initButtons();
+            $.get(buttonURL, function(response) {
+                TEMPLATES['button'] = response;
+                self.initButtons();
+            });
         });
 
         this.isInit = true;
@@ -41,59 +52,73 @@ function Page() {
     };
 
     this.launch = function(type) {
-        switch(type) {
-            case 'mail' :
-                helpgrandma.Composer.initComposer();
-
-                $( window ).ready(function() {
-                    helpgrandma.gmail = new Gmail();
-                });
-
-                break;
-            case 'search' :
-                helpgrandma.SearchBar.initSearchBar();
-                break;
-        }
+        // tutorials + steps
+        // switch(type) {
+        //     case 'mail' :
+        //         helpgrandma.Composer.initComposer();
+        //         break;
+        //     case 'search' :
+        //         search.Bar.initBar();
+        //         break;
+        // }
         // do something here to launch help
     };
 
     this.initButtons = function(){
-        var HELP_GRANMA_URLS = {
-            MAIL: 'https://mail.google.com',
-            SEARCH : 'https://www.google.com',
-        };
+        var self = this,
+            ACTIONS_DATA = {};
 
-        var self = this;
-
-        function init () {
-            self.findElems()
-                .bind();
+        function init(){
+            chrome.runtime.sendMessage({
+                action: "getData"
+            }, function(data) {
+                ACTIONS_DATA = data;
+                self.setup();
+            });
         }
 
-        this.findElems = function() {
-            this.$container = $('#grandma-frame');
-            this.$btnCall = this.$container.find(".btn-call");
-            this.$btnSearch = this.$container.find(".btn-search");
-            this.$btnMail = this.$container.find(".btn-mail");
+        this.setup = function() {
+            this.$container = $('#grandma-frame .available-actions');
 
-            return this;
+            for (var i in ACTIONS_DATA) {
+                var actionConfig = ACTIONS_DATA[i],
+                    $button = null;
+
+                $button = $(TEMPLATES['button']);
+                $button.find('button').addClass(actionConfig.tile.class);
+                $button.find('.btn-icon').addClass('icon-' + actionConfig.tile.icon);
+                $button.find('.btn-label').text(actionConfig.tile.label);
+
+                // store data
+                $button.data('config', actionConfig);
+
+                // append to bar
+                this.$container.prepend($button);
+
+                // bind click event
+                $button.on('click', function(e) {
+                    e.preventDefault();
+                    var config = $(this).data('config');
+
+                    switch (config.type) {
+                        case "url":
+                            helpgrandma.Page.navigate(((config.secure) ? 'https' : 'http') + '://' + config.href + '/');
+                            break;
+                        case "tel":
+                            var wnd = window.open('tel:' + config.href);
+                            setTimeout(function() {
+                              wnd.close();
+                            }, 1000);
+                            break;
+                        default:
+                            console.log("missing type integration " + config.type);
+                    }
+                }); // jshint ignore:line
+
+                // store reference
+                ACTIONS_DATA[i].button = $button;
+            }
         };
-
-        this.bind = function() {
-            this.$btnMail.on('click', function() {
-                helpgrandma.Page.navigate(HELP_GRANMA_URLS.MAIL);
-            });
-            this.$btnSearch.on('click', function(){
-                helpgrandma.Page.navigate(HELP_GRANMA_URLS.SEARCH);
-            });
-
-            return this;
-        };
-
-        // this.navigate = function(page) {
-        //     // alert(12312);
-        //     helpgrandma.Page.navigate(page);
-        // };
 
         init();
     };

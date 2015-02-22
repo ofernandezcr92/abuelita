@@ -1,6 +1,7 @@
 {
     "type" : "url",
     "href" : "orteil.dashnet.org/cookieclicker",
+    "secure" : false,
     "tile" : {
         "class" : "btn-play",
         "icon" : "cookie",

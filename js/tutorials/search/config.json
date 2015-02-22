@@ -1,6 +1,7 @@
 {
     "type" : "url",
     "href" : "www.google.com",
+    "secure" : true,
     "tile" : {
         "class" : "btn-search",
         "icon" : "search",

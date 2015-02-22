@@ -2,11 +2,10 @@ var console = console || {},
     chrome = chrome || {},
     grandma = grandma || {};
 
+var ACTIONS = ["mail", "search", "call", "play"],
+    ACTIONS_DATA = {};
+
 function ActionsHandler() {
-
-    var ACTIONS = ["mail", "search", "call", "play"],
-        ACTIONS_DATA = {};
-
     this.registerAllListeners = function() {
         for (var i = ACTIONS.length - 1; i >= 0; i--) {
             this.registerListener(ACTIONS[i]);
@@ -59,10 +58,13 @@ function ActionsHandler() {
     });
 
     // register listening actions
-    chrome.runtime.onMessage.addListener(function(request) {
+    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         switch(request.action) {
             case 'navigate':
                 actionsHandler.navigate(request.url);
+                break;
+            case 'getData':
+                sendResponse(ACTIONS_DATA);
                 break;
             default:
                 console.log('Invalid action');
