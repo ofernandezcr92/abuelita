@@ -44,6 +44,11 @@ function Page() {
         switch(type) {
             case 'mail' :
                 helpgrandma.Composer.initComposer();
+
+                $( window ).ready(function() {
+                    helpgrandma.gmail = new Gmail();
+                });
+
                 break;
             case 'search' :
                 helpgrandma.SearchBar.initSearchBar();

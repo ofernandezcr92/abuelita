@@ -23,6 +23,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cookie:before {
+    content: "\e603";
+}
+
 .icon-phone:before {
     content: "\e600";
 }

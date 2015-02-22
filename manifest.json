@@ -12,7 +12,7 @@
 
   "content_scripts": [ {
     "css" : ["vendor/bootstrap/css/bootstrap-grandma.css", "css/grandma.css"],
-    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js", "js/mail.js", "js/search.js"],
+    "js": [ "vendor/jquery/jquery.min.js", "js/content.js", "js/page.js", "js/mail.js", "js/search.js", "js/gmail.js"],
     "matches": [ "http://*/*", "https://*/*"],
     "run_at": "document_end"
   }],
