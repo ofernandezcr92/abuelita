@@ -13,10 +13,11 @@ var helpgrandma = helpgrandma || {};
                     $('.z0').children().addClass("composer-button");
 
                     $('.z0').eq(0).bind("click", function() {
-                        $('.high-light').remove();
+                        // $('.high-light').remove();
                         $('.composer-announcement').remove();
                         $('.z0').parent().removeClass("relevant-area");
                         $('.z0').eq(0).removeClass("composer-button");
+                        $('.dw').addClass("relevant-area");
                     });
 
                     this.init = true;
