@@ -6,20 +6,21 @@ var helpgrandma = helpgrandma || {};
 
         this.initSearchBar = function () {
             if(!this.init) {
-                if($('#sfdiv').length > 0) {
-                	$('#viewport').prepend('<div class="search-high-light"></div>');
-                	$('#sfdiv').addClass("search-bar");
+                var searchBar = $(document.querySelectorAll('input[type="text"]')[0]);
 
-                	$('.tsf-p').append('<div class="search-composer-announcement"><div class="top-arrow"></div><div class="grandma-container"></div><span class="grandma-text search-text"> Write your question </span></div>');
+                if(searchBar.length > 0) {
+                    $('#viewport').prepend('<div class="search-high-light"></div>');
+                    searchBar.addClass("search-bar");
+
+                    $('.tsf-p').append('<div class="search-composer-announcement"><div class="top-arrow"></div><div class="grandma-container"></div><span class="grandma-text search-text"> Write your question </span></div>');
 
 
 
-                	$('#lst-ib').bind("input", function() {
+                    searchBar.bind("input", function() {
                         $('.search-high-light').remove();
-                        $('#sfdiv').removeClass("search-bar");
+                        searchBar.removeClass("search-bar");
                         $('.search-composer-announcement').remove();
-
-                	});
+                    });
 
                     // $('body').prepend('<div class="high-light"></div>');
                     // $('.z0').parent().addClass("relevant-area");

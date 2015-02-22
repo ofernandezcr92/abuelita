@@ -1,9 +1,9 @@
 var helpgrandma = helpgrandma || {},
     chrome = chrome || {},
-    console = console || {},
-    search = search || {};
+    console = console || {};
 
-var TEMPLATES = {};
+var ACTIONS_DATA = {},
+    TEMPLATES = {};
 
 function Page() {
 
@@ -53,20 +53,18 @@ function Page() {
 
     this.launch = function(type) {
         // tutorials + steps
-        // switch(type) {
-        //     case 'mail' :
-        //         helpgrandma.Composer.initComposer();
-        //         break;
-        //     case 'search' :
-        //         search.Bar.initBar();
-        //         break;
-        // }
-        // do something here to launch help
+        switch(type) {
+            case 'mail' :
+                helpgrandma.Composer.initComposer();
+                break;
+            case 'search' :
+                helpgrandma.SearchBar.initSearchBar();
+                break;
+        }
     };
 
     this.initButtons = function(){
-        var self = this,
-            ACTIONS_DATA = {};
+        var self = this;
 
         function init(){
             chrome.runtime.sendMessage({
