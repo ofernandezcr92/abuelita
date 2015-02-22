@@ -76,6 +76,7 @@ body {
     @include box-sizing(border-box);
     font-family: "Museo300", Arial, Helvetica !important;
     left: 0;
+    overflow: auto;
     padding: 15px 20px;
     position: fixed;
     top: 0;
