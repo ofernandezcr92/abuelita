@@ -1,20 +1,11 @@
-var chrome = chrome || {},
+var console = console || {},
+    chrome = chrome || {},
     grandma = grandma || {};
 
 function ActionsHandler() {
 
-    var ACTIONS = [
-        {
-            prefix: "mail.google.com/*",
-            action: "mail"
-        },
-        {
-            prefix: "www.google.com/*",
-            action: "search"
-        }
-    ];
-
-    // this.handlers = [];
+    var ACTIONS = ["mail", "search", "call", "play"],
+        ACTIONS_DATA = {};
 
     this.registerAllListeners = function() {
         for (var i = ACTIONS.length - 1; i >= 0; i--) {
@@ -23,26 +14,19 @@ function ActionsHandler() {
     };
 
     this.registerListener = function(action) {
-        var self = this;
-
-        chrome.webNavigation.onCompleted.addListener(function(object) {
-            var type = self.getActionType(object.url);
-
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, { action: "launch",  type: type});
-            });
-        }, {
-            url: [{
-                urlMatches: action.prefix
-            }]
+        $.getJSON(chrome.extension.getURL("js/tutorials/" + action + "/config.json"), function(config) {
+            ACTIONS_DATA[action] = config;
         });
     };
 
-    this.getActionType = function(url) {
-        for (var i = ACTIONS.length - 1; i >= 0; i--) {
-            var re = new RegExp(ACTIONS[i].prefix);
-            if (url.match(re)) {
-                return ACTIONS[i].action;
+    this.getActionFromUrl = function(url) {
+        for (var i in ACTIONS) {
+            var actionName = ACTIONS[i];
+            if (ACTIONS_DATA.hasOwnProperty(actionName)) {
+                var actionConfig = ACTIONS_DATA[actionName];
+                if (actionConfig.type === "url" && url.match(new RegExp(actionConfig.href))) {
+                    return actionName;
+                }
             }
         }
     };
@@ -52,14 +36,7 @@ function ActionsHandler() {
             url: url
         });
     };
-    // init();
 }
-
-// chrome.webNavigation.onCompleted.addListener(function() {
-//     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//         chrome.tabs.sendMessage(tabs[0].id, { action: "init" });
-//     });
-// });
 
 (function(){
     // register listener for page load event
@@ -72,6 +49,14 @@ function ActionsHandler() {
     // register specific handlers
     var actionsHandler = new ActionsHandler();
     actionsHandler.registerAllListeners();
+
+    // register web page on completed loading handler
+    chrome.webNavigation.onCompleted.addListener(function(object) {
+        var type = actionsHandler.getActionFromUrl(object.url);
+        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, { action: "launch",  type: type});
+        });
+    });
 
     // register listening actions
     chrome.runtime.onMessage.addListener(function(request) {

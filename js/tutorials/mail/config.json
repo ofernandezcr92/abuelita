@@ -1,0 +1,19 @@
+{
+    "type" : "url",
+    "href" : "mail.google.com",
+    "tile" : {
+        "class" : "btn-mail",
+        "icon" : "mail",
+        "label" : "Send email"
+    },
+    "steps" : [
+        {
+            "selector" : "",
+            "tip" : "Click this button"
+        },
+        {
+            "selector" : "",
+            "tip" : "Write your son email"
+        }
+    ]
+}

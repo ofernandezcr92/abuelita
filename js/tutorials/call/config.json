@@ -1,0 +1,9 @@
+{
+    "type" : "tel",
+    "href" : "8345-0158",
+    "tile" : {
+        "class" : "btn-call",
+        "icon" : "phone",
+        "label" : "Call Daniela"
+    }
+}

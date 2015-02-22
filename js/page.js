@@ -41,9 +41,12 @@ function Page() {
 
     this.launch = function(type) {
         switch(type) {
-            case 'search' :
+            case 'mail' :
                 mail.Composer.initComposer();
+                break;
+            case 'search' :
                 search.Bar.initBar();
+                break;
         }
         // do something here to launch help
     };

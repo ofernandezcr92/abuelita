@@ -1,0 +1,19 @@
+{
+    "type" : "url",
+    "href" : "www.google.com",
+    "tile" : {
+        "class" : "btn-search",
+        "icon" : "search",
+        "label" : "Search"
+    },
+    "steps" : [
+        {
+            "selector" : "",
+            "tip" : "What do you want to search?"
+        },
+        {
+            "selector" : "",
+            "tip" : "Click this button"
+        }
+    ]
+}

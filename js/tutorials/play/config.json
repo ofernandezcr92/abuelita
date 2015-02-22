@@ -1,0 +1,9 @@
+{
+    "type" : "url",
+    "href" : "orteil.dashnet.org/cookieclicker",
+    "tile" : {
+        "class" : "btn-play",
+        "icon" : "cookie",
+        "label" : "Bake Cookies"
+    }
+}
