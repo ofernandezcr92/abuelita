@@ -1,6 +1,6 @@
 var helpgrandma = helpgrandma || {},
     chrome = chrome || {},
-    mail = mail || {},
+    // mail = mail || {},
     search = search || {};
 
 function Page() {
@@ -20,7 +20,8 @@ function Page() {
 
         $.get(frame, function(response) {
             // wrap site content
-            $("body").wrapInner('<div id="grandma-site" class="grandma-frame-wrapper"></div>');
+            // TODO: this doesn't work in gmail/google
+            // $("body").wrapInner('<div id="grandma-site" class="grandma-frame-wrapper"></div>');
             // add frame
             var html = $(response);
                 html.find('.header img').attr('src', chrome.extension.getURL("img/abuela.png"));
@@ -42,7 +43,7 @@ function Page() {
     this.launch = function(type) {
         switch(type) {
             case 'mail' :
-                mail.Composer.initComposer();
+                helpgrandma.Composer.initComposer();
                 break;
             case 'search' :
                 search.Bar.initBar();
