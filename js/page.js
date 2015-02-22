@@ -46,7 +46,7 @@ function Page() {
                 helpgrandma.Composer.initComposer();
                 break;
             case 'search' :
-                search.Bar.initBar();
+                helpgrandma.SearchBar.initSearchBar();
                 break;
         }
         // do something here to launch help

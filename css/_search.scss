@@ -1,6 +1,47 @@
 
 .search-bar {
+	z-index: 201;
 	border-width : 10px !important;
 	border-style : solid !important;
-	border-color : black !important;
+	border-color : white !important;
+}
+
+.search-high-light {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: black;
+	z-index: 200;
+	opacity: 0.8;
+}
+
+#searchform {
+	z-index: 300 !important;
+}
+
+.search-composer-announcement {
+	background-color: white;
+	color: rgb(90, 196, 190);
+	font-size: 32px;
+	height: 111px;
+	position: absolute;
+ 	top: 120px;
+	width: 395px;
+	z-index: 1000;
+	font-family: MuseoSans300, Arial, Helvetica;
+}
+
+.top-arrow {
+	border-bottom: 11px solid white;
+	border-left: 11px solid transparent;
+	border-right: 11px solid transparent;
+	height: 0px;
+	left: 150px;
+	position: absolute;
+	top: -11px;
+	width: 0px;
+}
+
+.search-text {
+	font-size: 28px !important;
 }

@@ -1,16 +1,47 @@
-var search = search || {};
+var helpgrandma = helpgrandma || {};
 
-function Bar() {
-	this.init = false;
+(function(){
+    function SearchBar() {
+        this.init = false;
 
-	this.initBar = function () {
-		if(!this.init) {
-			if($('#sfdiv').length > 0) {
-    			$('#sfdiv').addClass("search-bar");
-    			this.init = true;
-    		}
-    	}
-	};
-}
+        this.initSearchBar = function () {
+            if(!this.init) {
+                if($('#sfdiv').length > 0) {
+                	$('body').prepend('<div class="search-high-light"></div>');
+                	$('#sfdiv').addClass("search-bar");
 
-search.Bar  = new Bar();
+                	$('.tsf-p').append('<div class="search-composer-announcement"><div class="top-arrow"></div><div class="grandma-container"></div><span class="grandma-text search-text"> Write your question </span></div>');
+                	// tsf-p
+
+                    // $('body').prepend('<div class="high-light"></div>');
+                    // $('.z0').parent().addClass("relevant-area");
+                    // $('.z0').parent().append('<div class="composer-announcement"><div class="left-arrow"></div><div class="grandma-container"></div><span class="grandma-text"> Click this button </span></div>');
+                    // $('.z0').children().addClass("composer-button");
+
+                    // $('.z0').eq(0).bind("click", function() {
+                    //     $('.high-light').remove();
+                    //     $('.composer-announcement').remove();
+                    //     $('.z0').parent().removeClass("relevant-area");
+                    //     $('.z0').eq(0).removeClass("composer-button");
+                    // });
+
+                    this.init = true;
+                }
+            }
+        };
+    }
+
+    helpgrandma.SearchBar  = new SearchBar();
+})();
+
+// // element.style {
+// /* background-color: white; */
+// color: rgb(90, 196, 190);
+// font-size: 32px;
+// height: 111px;
+// left: 10px;
+// position: absolute;
+// /* top: 0px; */
+// width: 395px;
+// z-index: 1000;
+// font-family: MuseoSans300, Arial, Helvetica;
